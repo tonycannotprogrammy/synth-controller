@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Synth Controller</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>Synth Controller – Live</h1>
+  <div id="keys"></div>
+  <div id="encs"></div>
+  <h2>Konfiguration</h2>
+  <p><a href="/config" target="_blank">config.yaml ansehen</a></p>
+
+<script>
+const keys = document.getElementById("keys");
+const encs = document.getElementById("encs");
+const ws = new WebSocket(`ws://${location.host}/ws`);
+ws.onmessage = (ev) => {
+  const m = JSON.parse(ev.data);
+  if (m.type === "key") {
+    const id = m.id;
+    const el = document.getElementById(id) || Object.assign(document.createElement("div"), {id});
+    el.textContent = `${id}: ${m.kind}`;
+    keys.appendChild(el);
+  }
+  if (m.type === "enc") {
+    const id = m.name;
+    const el = document.getElementById(id) || Object.assign(document.createElement("div"), {id});
+    el.textContent = `${id}: ${m.delta > 0 ? "↻" : "↺"} (sum: ${(parseInt(el.dataset.sum||0)+m.delta)})`;
+    el.dataset.sum = (parseInt(el.dataset.sum||0)+m.delta);
+    encs.appendChild(el);
+  }
+};
+</script>
+</body>
+</html>

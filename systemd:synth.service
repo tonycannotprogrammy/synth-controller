@@ -1,0 +1,15 @@
+[Unit]
+Description=Synth Controller
+After=network-online.target pigpiod.service
+Wants=network-online.target pigpiod.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/synth-controller
+ExecStart=/home/pi/synth-controller/run.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

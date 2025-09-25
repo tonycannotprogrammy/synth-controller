@@ -1,0 +1,17 @@
+[project]
+name = "synth-controller"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "jinja2",
+  "pyyaml",
+  "pydantic>=2",
+  "starlette",
+  "websockets",
+  "pigpio",        # für stabile GPIO-Interrupts
+]
+
+[tool.uv]
+# keine speziellen Optionen nötig

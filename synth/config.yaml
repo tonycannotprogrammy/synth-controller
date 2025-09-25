@@ -1,0 +1,43 @@
+matrix:
+  rows:
+    ROW0: 2
+    ROW1: 3
+    ROW2: 14
+  cols:
+    COL0: 18
+    COL1: 6
+    COL2: 5
+    COL3: 0
+    COL4: 11
+    COL5: 4
+  # Bestückte Tasten (12 Stück, eine Position bleibt frei):
+  # MX-Index ist nur logisch; jede hat row/col:
+  keys:
+    - {id: MX1,  row: ROW1, col: COL0}
+    - {id: MX2,  row: ROW1, col: COL1}
+    - {id: MX3,  row: ROW1, col: COL2}
+    - {id: MX4,  row: ROW1, col: COL3}
+    - {id: MX5,  row: ROW1, col: COL4}
+    - {id: MX6,  row: ROW1, col: COL5}
+
+    - {id: MX7,  row: ROW2, col: COL0}
+    - {id: MX8,  row: ROW2, col: COL1}
+    - {id: MX9,  row: ROW2, col: COL2}
+    - {id: MX10, row: ROW2, col: COL3}
+    - {id: MX11, row: ROW2, col: COL4}
+    - {id: MX12, row: ROW2, col: COL5}
+
+  empty_positions:
+    - {row: ROW0, col: COL?}   # bewusst leer (Encoder-Zone), wird ignoriert
+
+encoders:
+  - {name: SW1, A: 26, B: 12}
+  - {name: SW2, A: 19, B: 1}
+  - {name: SW3, A: 13, B: 7}
+  - {name: SW4, A: 10, B: 22}
+  - {name: SW5, A: 17, B: 9}
+
+app:
+  web_host: "0.0.0.0"
+  web_port: 8080
+  debounce_ms: 12
