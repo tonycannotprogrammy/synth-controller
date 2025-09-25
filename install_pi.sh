@@ -9,7 +9,7 @@ fi
 
 # 2) pigpio installieren + daemon aktivieren
 sudo apt-get update
-sudo apt-get install -y pigpio
+sudo apt-get install -y pigpio libasound2
 sudo systemctl enable pigpiod
 sudo systemctl start pigpiod
 

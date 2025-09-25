@@ -11,6 +11,7 @@ dependencies = [
   "starlette",
   "websockets",
   "pigpio",        # für stabile GPIO-Interrupts
+  "simpleaudio",
 ]
 
 [tool.uv]

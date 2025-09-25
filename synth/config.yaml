@@ -10,32 +10,33 @@ matrix:
     COL3: 0
     COL4: 11
     COL5: 4
-  # Bestückte Tasten (12 Stück, eine Position bleibt frei):
-  # MX-Index ist nur logisch; jede hat row/col:
   keys:
-    - {id: MX1,  row: ROW1, col: COL0}
-    - {id: MX2,  row: ROW1, col: COL1}
-    - {id: MX3,  row: ROW1, col: COL2}
-    - {id: MX4,  row: ROW1, col: COL3}
-    - {id: MX5,  row: ROW1, col: COL4}
-    - {id: MX6,  row: ROW1, col: COL5}
-
-    - {id: MX7,  row: ROW2, col: COL0}
-    - {id: MX8,  row: ROW2, col: COL1}
-    - {id: MX9,  row: ROW2, col: COL2}
-    - {id: MX10, row: ROW2, col: COL3}
-    - {id: MX11, row: ROW2, col: COL4}
-    - {id: MX12, row: ROW2, col: COL5}
-
-  empty_positions:
-    - {row: ROW0, col: COL?}   # bewusst leer (Encoder-Zone), wird ignoriert
+    - {id: MX1,  row: ROW1, col: COL0, note: C4,  label: C}
+    - {id: MX2,  row: ROW1, col: COL1, note: D4,  label: D}
+    - {id: MX3,  row: ROW1, col: COL2, note: E4,  label: E}
+    - {id: MX4,  row: ROW1, col: COL3, note: F4,  label: F}
+    - {id: MX5,  row: ROW1, col: COL4, note: G4,  label: G}
+    - {id: MX6,  row: ROW1, col: COL5, note: A4,  label: A}
+    - {id: MX7,  row: ROW2, col: COL0, note: B4,  label: B}
+    - {id: MX8,  row: ROW2, col: COL1, note: C5,  label: C5}
+    - {id: MX9,  row: ROW2, col: COL2, note: D5,  label: D5}
+    - {id: MX10, row: ROW2, col: COL3, note: E5,  label: E5}
+    - {id: MX11, row: ROW2, col: COL4, note: F5,  label: F5}
+    - {id: MX12, row: ROW2, col: COL5, note: G5,  label: G5}
 
 encoders:
-  - {name: SW1, A: 26, B: 12}
-  - {name: SW2, A: 19, B: 1}
-  - {name: SW3, A: 13, B: 7}
-  - {name: SW4, A: 10, B: 22}
-  - {name: SW5, A: 17, B: 9}
+  - {name: SW1, A: 26, B: 12, action: transpose, step: 1}
+  - {name: SW2, A: 19, B: 1,  action: volume,    step: 0.05}
+  - {name: SW3, A: 13, B: 7,  action: waveform}
+  - {name: SW4, A: 10, B: 22, action: none}
+  - {name: SW5, A: 17, B: 9,  action: none}
+
+synth:
+  waveform: sine
+  volume: 0.7
+  transpose: 0
+  attack_ms: 5
+  release_ms: 180
 
 app:
   web_host: "0.0.0.0"
